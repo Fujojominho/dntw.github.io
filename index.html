@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>东南特卫可视化</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script>
+      // 滚动条
+      $(function () {
+        $('.myscroll').myScroll({
+          speed: 60, //数值越大，速度越慢
+          rowHeight: 38, //li的高度
+        });
+      });
+
+      $(document).ready(function () {
+        var whei = $(window).width();
+        $('html').css({ fontSize: whei / 22 });
+        $(window).resize(function () {
+          var whei = $(window).width();
+          $('html').css({ fontSize: whei / 22 });
+        });
+      });
+    </script>
+    <style>
+      video {
+        display: block;
+        margin: 0 auto;
+      }
+
+      #videoContainer {
+        display: flex;
+        justify-content: center;
+      }
+      .logo {
+        width: 13%; /* 使用相对值，这里设置为父元素宽度的10% */
+        height: auto; /* 高度自适应，根据宽度等比缩放 */
+        max-width: 100px; /* 设置一个最大宽度，避免图片过大 */
+        margin-left: 17px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main">
+      <!-- 头部区域-->
+      <div class="header">
+        <div class="header-left fl">
+          <img src="./images/gslogo.png" alt="" class="logo" />
+        </div>
+        <div class="header-center fl">
+          <div class="header-title">东南特卫可视化展示</div>
+          <div class="header-img"></div>
+        </div>
+        <div class="header-right fl" id="time"></div>
+        <div class="header-bottom fl"></div>
+      </div>
+      <!-- 中间区域 -->
+      <div class="center">
+        <div class="center-cen fl">
+          <div class="cen-top">
+            <div id="map" class="allnav"></div>
+            <div
+              id="videoContainer"
+              style="display: flex; justify-content: center; display: none"
+            >
+              <video
+                id="myVideo"
+                width="100%"
+                height="100%"
+                controls
+                autoplay
+                muted
+              >
+                <source
+                  src="./images/sp/正文视频.mp4"
+                  type="video/mp4"
+                  alt="Second slide"
+                  style="width: 100%"
+                />
+              </video>
+            </div>
+          </div>
+        </div>
+        <div class="center-right fr">
+          <!-- 右上角 发展历程 -->
+          <div class="right-top">
+            <div class="title">发展历程</div>
+              <div class="gun">
+                <span class="nr1">年份</span>
+                <span class="nr2">内容</span>
+              </div>
+              <div id="FontScroll" class="myscroll">
+                <ul id="list"></ul>
+              </div>
+          </div>
+          <!-- 右下角 荣誉展示 -->
+          <div class="right-cen">
+            <div class="title">荣誉展示</div>
+            <div class="scolldiv scolldiv1">
+              <!-- 向上滚动图 -->
+              <div
+                id="colee"
+                style="overflow: hidden; height: 100%; width: 100% ;padding:5px"
+              >
+                <div id="colee1">
+                  <ul class="face01 clearfix">
+                    <li>
+                      <img src="./images/ryzs/ry1.png" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry2.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry3.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry4.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry5.png" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry6.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry7.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry8.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry9.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry10.png" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry11.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry12.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry13.png" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry14.png" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry15.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry16.png" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry17.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry18.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry19.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry20.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry21.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry22.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry23.png" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry24.png" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry25.png" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry26.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry27.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry28.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry29.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry30.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry31.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry32.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry33.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry34.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry35.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry36.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry37.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry38.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry39.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry40.jpg" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry41.png" />
+                    </li>
+                    <li>
+                      <img src="./images/ryzs/ry42.png" />
+                    </li>
+                  </ul>
+                </div>
+                <div id="colee2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/fontscroll.js"></script>
+    <script src="js/china.js"></script>
+    <script src="js/index.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var intervalId; // 用于保存定时器ID
+
+        // 定义展示地图和视频的函数
+        function showMapAndVideo() {
+          var video = document.getElementById('myVideo');
+
+          // 显示地图，隐藏视频
+          document.getElementById('map').style.display = 'block';
+          document.getElementById('videoContainer').style.display = 'none';
+
+          // 等待地图加载完成后，切换到视频播放
+          setTimeout(function () {
+            // 显示视频，隐藏地图
+            document.getElementById('map').style.display = 'none';
+            document.getElementById('videoContainer').style.display = 'block';
+
+            video.load();
+            video.play();
+
+            // 监听视频播放结束事件
+            video.onended = function () {
+              // 隐藏视频，显示地图
+              document.getElementById('videoContainer').style.display = 'none';
+              document.getElementById('map').style.display = 'block';
+
+              // 再次调用展示地图和视频的函数，实现循环展示
+              setTimeout(showMapAndVideo, 10000); // 10秒后切换到视频播放
+            };
+          }, 10000); // 10秒后切换到视频播放
+        }
+
+        // 初始化展示地图和视频
+        showMapAndVideo();
+      });
+    </script>
+
+    <!-- 右下角向上滚动图js -->
+    <script>
+      var speed = 30;
+      var colee2 = document.getElementById('colee2');
+      var colee1 = document.getElementById('colee1');
+      var colee = document.getElementById('colee');
+      colee2.innerHTML = colee1.innerHTML; //克隆colee1为colee2
+      function Marquee1() {
+        //当滚动至colee1与colee2交界时
+        if (colee2.offsetTop - colee.scrollTop <= 0) {
+          colee.scrollTop -= colee1.offsetHeight; //colee跳到最顶端
+        } else {
+          colee.scrollTop++;
+        }
+      }
+      var MyMar1 = setInterval(Marquee1, speed); //设置定时器
+      //鼠标移上时清除定时器达到滚动停止的目的
+      colee.onmouseover = function () {
+        clearInterval(MyMar1);
+      };
+      //鼠标移开时重设定时器
+      colee.onmouseout = function () {
+        MyMar1 = setInterval(Marquee1, speed);
+      };
+      $(document).ready(function () {
+        i = 0;
+        ii = 0;
+        var hei = $('.face01 li').height();
+        var hei2 = hei * 1;
+        $('.scolldiv').height(hei2);
+
+        var html1 = $('.scolldiv1 ul').html();
+        var le = $('.scolldiv1 li').length / 1;
+        $('.scolldiv1 ul').append(html1);
+
+        var time = setInterval(aa, 1000);
+        function aa() {
+          i++;
+          if (i == le + 1) {
+            $('.scolldiv1 ul').css({ top: 0 });
+            i = 1;
+            $('.scolldiv1 ul').animate({ top: hei * i });
+          }
+          $('.scolldiv1 ul').animate({ top: hei * i });
+        }
+      });
+    </script>
+
+    <script>
+      //顶部时间
+      function getTime() {
+        var myDate = new Date();
+        var myYear = myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+        var myMonth = myDate.getMonth() + 1; //获取当前月份(0-11,0代表1月)
+        var myToday = myDate.getDate(); //获取当前日(1-31)
+        var myDay = myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
+        var myHour = myDate.getHours(); //获取当前小时数(0-23)
+        var myMinute = myDate.getMinutes(); //获取当前分钟数(0-59)
+        var mySecond = myDate.getSeconds(); //获取当前秒数(0-59)
+        var week = [
+          '星期日',
+          '星期一',
+          '星期二',
+          '星期三',
+          '星期四',
+          '星期五',
+          '星期六',
+        ];
+        var nowTime;
+
+        nowTime =
+          myYear +
+          '-' +
+          fillZero(myMonth) +
+          '-' +
+          fillZero(myToday) +
+          '&nbsp;&nbsp;' +
+          fillZero(myHour) +
+          ':' +
+          fillZero(myMinute) +
+          ':' +
+          fillZero(mySecond) +
+          '&nbsp;&nbsp;' +
+          week[myDay] +
+          '&nbsp;&nbsp;';
+        $('#time').html(nowTime);
+      }
+      function fillZero(str) {
+        var realNum;
+        if (str < 10) {
+          realNum = '0' + str;
+        } else {
+          realNum = str;
+        }
+        return realNum;
+      }
+      setInterval(getTime, 1000);
+      const data = [
+        { month: '2014年1月', content: '厦门东南特卫保安服务有限公司成立' },
+        { month: '2015年3月', content: '通过ISO9001、ISO14001等论证' },
+        {
+          month: '2016年11月',
+          content: '厦门东南特卫保安服务有限公司宁德分公司成立',
+        },
+        {
+          month: '2017年2月',
+          content: '厦门东南特卫保安服务有限公司漳州分公司成立',
+        },
+        {
+          month: '2017年3月',
+          content: '厦门东南特卫保安服务有限公司泉州分公司成立',
+        },
+        { month: '2017年6月', content: '厦门东南特卫保安服务有限公司工会成立' },
+        { month: '2017年7月', content: '公司成为福建省保安协会理事单位' },
+        {
+          month: '2017年8月',
+          content: '厦门东南特卫保安服务有限公司党支部成立',
+        },
+        {
+          month: '2017年9月',
+          content: '参加在厦门召开【金砖国会议】保障安保工作',
+        },
+        {
+          month: '2017年12月',
+          content: '厦门东南特卫保安服务有限公司湖里分公司成立',
+        },
+        {
+          month: '2017年12月',
+          content: '厦门东南特卫保安服务有限公司湖里创新园分公司成立',
+        },
+        {
+          month: '2018年1月',
+          content:
+            '我司协助安部赴东亚打击电信诈骗，抓获几百名罪犯押送回国，有力打击了国际电诈的嚣张气焰，为国家做出重大贡献，得到了公安部，及各省市公安厅表彰',
+        },
+        { month: '2018年2月', content: '厦门东南特卫保安培训有限公司成立' },
+        {
+          month: '2018年7月',
+          content: '厦门东南特卫保安服务有限公司禾山分公司成立',
+        },
+        { month: '2018年8月', content: '公司被评为【重合同守信用单位】' },
+        {
+          month: '2018年11月',
+          content: '厦门东南特卫保安服务有限公司深圳分公司',
+        },
+        { month: '2019年5月', content: '公司成为福建省安保协会副会长单位' },
+        {
+          month: '2020年11月',
+          content: '中国人民公安大学与厦门东南特卫成立战略合作单位',
+        },
+        { month: '2021年', content: '东南特卫企业咨询（厦门）有限公司成立' },
+        { month: '2021年1月', content: '东南特卫文化传媒（厦门）有限公司成立' },
+        {
+          month: '2021年12月',
+          content: '东南特卫公司参与【大山儿子】取得电影放映许可证',
+        },
+        { month: '2022年10月', content: '公司参与金鸡奖、百花奖安保项目' },
+        { month: '2023年5月', content: '公司参加厦门苏颂医院安保项目' },
+        { month: '2023年7月', content: '公司派往索马里兰国际安保项目' },
+        { month: '2023年11月', content: '公司派往缅甸国际安保项目' },
+        {
+          month: '2023年12月',
+          content: '东南特卫董事长马建霖担任【安全与发展联盟】副主席',
+        },
+        { month: '2024年1月', content: '东南特卫【海南】国际保安服务公司成立' },
+      ];
+
+      const ulElement = document.getElementById('list');
+
+      data.forEach((item) => {
+        const liElement = document.createElement('li');
+        liElement.innerHTML = `
+      <div class="fontInner clearfix">
+        <span class="short">
+          <b>${item.month}</b>
+        </span>
+        <span class="long">${item.content}</span>
+      </div>
+    `;
+        ulElement.appendChild(liElement);
+      });
+    </script>
+  </body>
+</html>

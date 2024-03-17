@@ -62,6 +62,20 @@
         <div class="center-cen fl">
           <div class="cen-top">
             <div id="map" class="allnav"></div>
+            <div id="img" class="allnav" style="display: none">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  height: 5%;
+                  color: #fff;
+                "
+              >
+                2018年11月20日至21日，菲律宾东南特卫安保有限公司参加中国驻菲大使馆欢迎习近平主席访菲仪式及维安活动
+              </div>
+              <img src="./images/main.jpg" style="width: 100%; height: 95%" />
+            </div>
             <div
               id="videoContainer"
               style="display: flex; justify-content: center; display: none"
@@ -81,6 +95,7 @@
                   style="width: 100%"
                 />
               </video>
+              <div></div>
             </div>
           </div>
         </div>
@@ -88,13 +103,13 @@
           <!-- 右上角 发展历程 -->
           <div class="right-top">
             <div class="title">发展历程</div>
-              <div class="gun">
-                <span class="nr1">年份</span>
-                <span class="nr2">内容</span>
-              </div>
-              <div id="FontScroll" class="myscroll">
-                <ul id="list"></ul>
-              </div>
+            <div class="gun">
+              <span class="nr1">年份</span>
+              <span class="nr2">内容</span>
+            </div>
+            <div id="FontScroll" class="myscroll">
+              <ul id="list"></ul>
+            </div>
           </div>
           <!-- 右下角 荣誉展示 -->
           <div class="right-cen">
@@ -103,7 +118,12 @@
               <!-- 向上滚动图 -->
               <div
                 id="colee"
-                style="overflow: hidden; height: 100%; width: 100% ;padding:5px"
+                style="
+                  overflow: hidden;
+                  height: 100%;
+                  width: 100%;
+                  padding: 5px;
+                "
               >
                 <div id="colee1">
                   <ul class="face01 clearfix">
@@ -252,14 +272,11 @@
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         var intervalId; // 用于保存定时器ID
-
-        // 定义展示地图和视频的函数
-        function showMapAndVideo() {
+        // 定义展示地图、视频和图片的函数
+        function showContent() {
           var video = document.getElementById('myVideo');
-
-          // 显示地图，隐藏视频
+          // 显示地图
           document.getElementById('map').style.display = 'block';
-          document.getElementById('videoContainer').style.display = 'none';
 
           // 等待地图加载完成后，切换到视频播放
           setTimeout(function () {
@@ -272,18 +289,21 @@
 
             // 监听视频播放结束事件
             video.onended = function () {
-              // 隐藏视频，显示地图
+              // 隐藏视频，显示图片
               document.getElementById('videoContainer').style.display = 'none';
-              document.getElementById('map').style.display = 'block';
+              document.getElementById('img').style.display = 'block';
 
-              // 再次调用展示地图和视频的函数，实现循环展示
-              setTimeout(showMapAndVideo, 10000); // 10秒后切换到视频播放
+              // 再次调用展示地图、视频和图片的函数，实现循环展示
+              setTimeout(function () {
+                document.getElementById('img').style.display = 'none';
+                document.getElementById('map').style.display = 'block';
+                showContent(); // 循环展示
+              }, 10000); // 10秒后切换到地图展示
             };
           }, 10000); // 10秒后切换到视频播放
         }
-
-        // 初始化展示地图和视频
-        showMapAndVideo();
+        // 初始化展示地图、视频和图片
+        showContent();
       });
     </script>
 

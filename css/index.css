@@ -130,6 +130,7 @@ ol {
   width: 100%;
   height: 100%;
   border: 0.01rem solid #217093;
+  border-radius: 5px
 }
 
 .center .center-right {
@@ -144,12 +145,14 @@ ol {
   height: 30%;
   margin-bottom: 0.2rem;
   border: 0.01rem solid #217093;
+  border-radius: 5px
 }
 .center .center-right .right-cen {
   width: 100%;
   height: 68%;
   border: 0.01rem solid #217093;
   overflow: hidden; /* 隐藏溢出部分 */
+  border-radius: 5px
 }
 
 .gun {
